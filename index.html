@@ -11,8 +11,8 @@
         
         body { 
             font-family: 'Space Grotesk', sans-serif; 
-            background-color: #05070a;
-            color: #e2e8f0;
+            background-color: #f8fafc;
+            color: #0f172a;
             scroll-behavior: smooth;
         }
 
@@ -20,11 +20,12 @@
             width: 100%;
             height: 100px;
             z-index: 10;
-            background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(34, 211, 238, 0.05) 50%, rgba(0, 0, 0, 0) 100%);
-            opacity: 0.1;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(37, 99, 235, 0.03) 50%, rgba(255, 255, 255, 0) 100%);
+            opacity: 0.5;
             position: absolute;
             bottom: 100%;
-            animation: scanline 6s linear infinite;
+            animation: scanline 8s linear infinite;
+            pointer-events: none;
         }
 
         @keyframes scanline {
@@ -33,31 +34,33 @@
         }
 
         .grid-bg {
-            background-image: radial-gradient(#1e293b 1px, transparent 1px);
-            background-size: 40px 40px;
+            background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
+            background-size: 30px 30px;
         }
 
         .cyber-card {
-            background: rgba(15, 23, 42, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(15, 23, 42, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
 
         .cyber-card:hover {
-            border-color: #22d3ee;
-            background: rgba(34, 211, 238, 0.02);
-            transform: translateY(-5px);
+            border-color: #2563eb;
+            background: #ffffff;
+            transform: translateY(-8px);
+            shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
         }
 
         .step-number {
-            -webkit-text-stroke: 1px rgba(34, 211, 238, 0.3);
+            -webkit-text-stroke: 1px rgba(37, 99, 235, 0.2);
             color: transparent;
         }
 
         .image-overlay {
-            background: linear-gradient(to top, rgba(5, 7, 10, 1) 0%, rgba(5, 7, 10, 0.2) 100%);
+            background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.1) 100%);
         }
 
         .card-img-bg {
@@ -67,75 +70,89 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0.1;
+            opacity: 0.03;
             z-index: -1;
             transition: opacity 0.3s ease;
+            filter: grayscale(100%);
         }
 
         .cyber-card:hover .card-img-bg {
-            opacity: 0.2;
+            opacity: 0.08;
+            filter: grayscale(0%);
+        }
+
+        .btn-glitch {
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .btn-glitch:hover {
+            letter-spacing: 0.2em;
+            box-shadow: 10px 10px 0px #2563eb;
+            transform: translate(-4px, -4px);
         }
     </style>
 </head>
 <body class="grid-bg" id="home">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 border-b border-white/5 bg-black/80 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+    <nav class="fixed w-full z-50 border-b border-slate-200/60 bg-white/70 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <a href="#home" class="text-xl font-bold tracking-[0.2em] text-white uppercase italic hover:text-cyan-400 transition">4SECURE<span class="text-cyan-500">_</span></a>
+                <a href="#home" class="text-2xl font-black tracking-tighter text-slate-900 uppercase italic hover:text-blue-600 transition">
+                    4SECURE<span class="text-blue-600">.</span>
+                </a>
             </div>
-            <div class="hidden md:flex items-center gap-10 text-[11px] font-bold tracking-[0.3em] uppercase">
-                <a href="#home" class="text-cyan-400">Почетна</a>
-                <a href="#services" class="hover:text-cyan-400 transition">Услуги</a>
-                <a href="#process" class="hover:text-cyan-400 transition">Процес</a>
-                <a href="#gallery" class="hover:text-cyan-400 transition">Галерија</a>
-                <a href="#about" class="hover:text-cyan-400 transition">За Нас</a>
-                <a href="#contact" class="border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition">Контакт</a>
+            <div class="hidden md:flex items-center gap-10 text-[11px] font-bold tracking-[0.2em] uppercase">
+                <a href="#home" class="text-blue-600">Почетна</a>
+                <a href="#services" class="text-slate-500 hover:text-blue-600 transition">Услуги</a>
+                <a href="#process" class="text-slate-500 hover:text-blue-600 transition">Процес</a>
+                <a href="#gallery" class="text-slate-500 hover:text-blue-600 transition">Галерија</a>
+                <a href="#about" class="text-slate-500 hover:text-blue-600 transition">За Нас</a>
+                <a href="#contact" class="bg-slate-900 text-white px-6 py-3 hover:bg-blue-600 transition shadow-lg shadow-slate-200">Контакт</a>
             </div>
-            <!-- Mobile Toggle Placeholder (Optional) -->
-            <div class="md:hidden text-white"><i class="fa-solid fa-bars"></i></div>
+            <div class="md:hidden text-slate-900 text-xl"><i class="fa-solid fa-bars-staggered"></i></div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <div class="scanline"></div>
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 relative z-10">
-            <div class="lg:col-span-7">
-                <div class="inline-flex items-center gap-2 mb-6 text-cyan-500 font-mono text-sm">
-                    <span class="w-2 h-2 bg-cyan-500 rounded-full animate-ping"></span>
-                    [ STATUS: SYSTEM_ONLINE ]
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-16 relative z-10">
+            <div class="lg:col-span-7 py-12">
+                <div class="inline-flex items-center gap-3 mb-8 bg-blue-50 border border-blue-100 px-4 py-2 rounded-full">
+                    <span class="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
+                    <span class="font-mono text-[10px] text-blue-700 font-bold tracking-widest uppercase">[ СИСТЕМ: АКТИВЕН ]</span>
                 </div>
-                <h1 class="text-6xl md:text-8xl font-bold text-white leading-none mb-8 tracking-tighter uppercase">
-                    Паметна <br>
-                    <span class="text-transparent" style="-webkit-text-stroke: 1px #22d3ee;">ЗАШТИТА_</span>
+                <h1 class="text-7xl md:text-9xl font-black text-slate-900 leading-[0.85] mb-10 tracking-tighter uppercase">
+                    ЧИСТА <br>
+                    <span class="text-transparent" style="-webkit-text-stroke: 1.5px #0f172a;">ЗАШТИТА_</span>
                 </h1>
-                <p class="text-slate-500 text-lg md:text-xl max-w-2xl mb-12 leading-relaxed uppercase tracking-tight font-light italic">
-                    Ние не само што монтираме камери — ние дизајнираме непробојни системи за заштита. Вашиот дом и бизнис заслужуваат 24/7 будно око.
+                <p class="text-slate-600 text-lg md:text-xl max-w-xl mb-12 leading-relaxed font-medium uppercase tracking-tight italic border-l-4 border-blue-600 pl-6">
+                    Ние не само што монтираме камери — ние дизајнираме интелигентни системи за безбедност. Модерна технологија за максимален мир.
                 </p>
                 <div class="flex flex-wrap gap-6">
-                    <a href="#contact" class="px-10 py-5 bg-cyan-500 text-black font-black uppercase text-sm tracking-widest hover:bg-cyan-400 transition shadow-[0_0_30px_rgba(34,211,238,0.2)]">
+                    <a href="#contact" class="px-12 py-6 bg-blue-600 text-white font-black uppercase text-sm tracking-[0.2em] transition btn-glitch">
                         Закажи термин
                     </a>
                 </div>
             </div>
-            <div class="lg:col-span-5 relative">
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 blur"></div>
-                    <div class="relative border border-white/10 p-1 bg-black overflow-hidden shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200" alt="Advanced Surveillance Monitoring" class="w-full h-[550px] object-cover brightness-90 group-hover:brightness-110 transition duration-700">
+            <div class="lg:col-span-5 relative flex items-center">
+                <div class="relative w-full">
+                    <div class="absolute -top-10 -right-10 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-60"></div>
+                    <div class="relative border-[12px] border-white bg-white overflow-hidden shadow-[0_32px_64px_-15px_rgba(0,0,0,0.15)] rounded-2xl">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200" alt="Advanced Surveillance Monitoring" class="w-full h-[550px] object-cover">
                         <div class="absolute inset-0 image-overlay"></div>
                         
-                        <div class="absolute bottom-8 left-8 right-8 bg-black/80 backdrop-blur-xl p-6 border-l-4 border-cyan-500 z-20 shadow-2xl">
-                            <div class="flex items-center justify-between mb-3">
-                                <p class="text-[10px] font-mono text-cyan-400 tracking-[0.3em]">SECURE_NODE_04</p>
+                        <div class="absolute bottom-10 left-10 right-10 bg-white/90 backdrop-blur-md p-8 border-t-4 border-blue-600 z-20 shadow-xl">
+                            <div class="flex items-center justify-between mb-4">
+                                <p class="text-[10px] font-mono text-blue-600 font-bold tracking-[0.3em]">SECURE_ID: 4S-2024</p>
                                 <div class="flex gap-1">
-                                    <span class="h-1 w-4 bg-cyan-500"></span>
-                                    <span class="h-1 w-2 bg-white/20"></span>
+                                    <div class="w-3 h-3 bg-blue-600 rounded-full"></div>
+                                    <div class="w-3 h-3 bg-slate-200 rounded-full"></div>
                                 </div>
                             </div>
-                            <p class="text-md font-bold text-white uppercase tracking-wider leading-tight">Професионален систем за напредна видео аналитика и следење во живо</p>
+                            <p class="text-lg font-bold text-slate-900 uppercase tracking-tight leading-none">Напредна видео аналитика со препознавање лица</p>
                         </div>
                     </div>
                 </div>
@@ -144,100 +161,109 @@
     </section>
 
     <!-- Services -->
-    <section id="services" class="py-32 border-t border-white/5">
+    <section id="services" class="py-32 bg-white relative">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div class="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-slate-100 pb-12">
                 <div>
-                    <span class="text-cyan-500 font-mono text-sm uppercase tracking-[0.5em]">01. Решенија</span>
-                    <h2 class="text-5xl font-bold text-white mt-4 uppercase tracking-tighter">Што нудиме?</h2>
+                    <span class="text-blue-600 font-mono text-xs font-bold uppercase tracking-[0.5em]">01. КАТАЛОГ</span>
+                    <h2 class="text-6xl font-black text-slate-900 mt-4 uppercase tracking-tighter">Услуги</h2>
                 </div>
-                <p class="text-slate-500 max-w-sm text-sm uppercase font-medium">Интегрираме најнова технологија за вашиот мир и сигурност.</p>
+                <p class="text-slate-400 max-w-xs text-xs uppercase font-bold tracking-widest leading-relaxed">Интегрираме врвна опрема за целосна контрола на вашиот простор.</p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="p-10 cyber-card group transition-all duration-300">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Service 1 -->
+                <div class="p-12 cyber-card group shadow-sm rounded-2xl">
                     <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&q=80&w=600" class="card-img-bg" alt="IP Camera">
-                    <div class="text-cyan-500 mb-8">
-                        <i class="fa-solid fa-eye text-4xl"></i>
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-10 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+                        <i class="fa-solid fa-eye text-3xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 uppercase text-white">4K IP Надзор</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed uppercase mb-6 font-light tracking-wide">Кристално чиста слика, дури и при најтемни услови со ColorVu технологија.</p>
-                    <div class="h-1 w-0 group-hover:w-full bg-cyan-500 transition-all duration-500"></div>
+                    <h3 class="text-2xl font-black mb-4 uppercase text-slate-900 tracking-tight">4K Видео Надзор</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed uppercase mb-8 font-medium tracking-wide">Кристална резолуција со ColorVu технологија за слика во боја дури и ноќе.</p>
+                    <div class="flex items-center gap-2 text-blue-600 font-bold text-[10px] tracking-[0.3em] uppercase opacity-0 group-hover:opacity-100 transition-opacity">
+                        Дознај повеќе <i class="fa-solid fa-arrow-right"></i>
+                    </div>
                 </div>
                 
-                <div class="p-10 cyber-card group transition-all duration-300">
+                <!-- Service 2 -->
+                <div class="p-12 cyber-card group shadow-sm rounded-2xl">
                     <img src="https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&q=80&w=600" class="card-img-bg" alt="Security Alarm">
-                    <div class="text-cyan-500 mb-8">
-                        <i class="fa-solid fa-bell text-4xl"></i>
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-10 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+                        <i class="fa-solid fa-bell text-3xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 uppercase text-white">Алармни Системи</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed uppercase mb-6 font-light tracking-wide">Паметни аларми кои детектираат луѓе, а игнорираат животни и сенки.</p>
-                    <div class="h-1 w-0 group-hover:w-full bg-cyan-500 transition-all duration-500"></div>
+                    <h3 class="text-2xl font-black mb-4 uppercase text-slate-900 tracking-tight">Паметни Аларми</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed uppercase mb-8 font-medium tracking-wide">Системи со вештачка интелигенција кои прават разлика меѓу човек и животно.</p>
+                    <div class="flex items-center gap-2 text-blue-600 font-bold text-[10px] tracking-[0.3em] uppercase opacity-0 group-hover:opacity-100 transition-opacity">
+                        Дознај повеќе <i class="fa-solid fa-arrow-right"></i>
+                    </div>
                 </div>
 
-                <div class="p-10 cyber-card group transition-all duration-300">
+                <!-- Service 3 -->
+                <div class="p-12 cyber-card group shadow-sm rounded-2xl">
                     <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=600" class="card-img-bg" alt="Mobile Monitoring">
-                    <div class="text-cyan-500 mb-8">
-                        <i class="fa-solid fa-mobile-screen-button text-4xl"></i>
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-10 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+                        <i class="fa-solid fa-shield-halved text-3xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4 uppercase text-white">Mobile Control</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed uppercase mb-6 font-light tracking-wide">Целосна контрола врз вашиот објект преку апликација на вашиот телефон.</p>
-                    <div class="h-1 w-0 group-hover:w-full bg-cyan-500 transition-all duration-500"></div>
+                    <h3 class="text-2xl font-black mb-4 uppercase text-slate-900 tracking-tight">Access Control</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed uppercase mb-8 font-medium tracking-wide">Целосна контрола на влез и излез преку биометрија или паметен телефон.</p>
+                    <div class="flex items-center gap-2 text-blue-600 font-bold text-[10px] tracking-[0.3em] uppercase opacity-0 group-hover:opacity-100 transition-opacity">
+                        Дознај повеќе <i class="fa-solid fa-arrow-right"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section id="process" class="py-32 bg-[#080a0f] relative overflow-hidden border-y border-white/5">
+    <!-- Process -->
+    <section id="process" class="py-32 bg-slate-50 relative border-y border-slate-200/60">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-24">
-                <span class="text-cyan-500 font-mono text-sm uppercase tracking-[0.5em]">02. Процес</span>
-                <h2 class="text-5xl font-bold text-white mt-4 uppercase tracking-tighter">Од прв повик до целосна заштита</h2>
+            <div class="text-center mb-32">
+                <span class="text-blue-600 font-mono text-xs font-bold uppercase tracking-[0.5em]">02. ФАЗИ</span>
+                <h2 class="text-5xl font-black text-slate-900 mt-4 uppercase tracking-tighter">Нашиот Процес</h2>
             </div>
 
-            <div class="grid md:grid-cols-4 gap-12 relative">
+            <div class="grid md:grid-cols-4 gap-16 relative">
                 <!-- Step 1 -->
                 <div class="relative group">
-                    <span class="text-8xl font-black step-number absolute -top-12 -left-4 opacity-40 group-hover:opacity-100 transition duration-500">01</span>
-                    <div class="pt-8 relative z-10">
-                        <h4 class="text-xl font-bold text-white mb-4 uppercase tracking-widest">Анализа</h4>
-                        <p class="text-slate-500 text-sm uppercase leading-relaxed font-light tracking-tight mb-6">Бесплатна проценка и скенирање на „слепите точки“ на вашиот објект.</p>
-                        <div class="h-32 w-full overflow-hidden grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition duration-700">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400" alt="Analysis" class="w-full h-full object-cover">
+                    <span class="text-8xl font-black step-number absolute -top-16 -left-6 opacity-40 group-hover:opacity-100 transition duration-500">01</span>
+                    <div class="relative z-10 pt-4">
+                        <h4 class="text-lg font-black text-slate-900 mb-4 uppercase tracking-widest">Анализа</h4>
+                        <p class="text-slate-500 text-[11px] uppercase leading-relaxed font-bold tracking-tight mb-8">Бесплатно скенирање на објектот и детекција на слаби точки.</p>
+                        <div class="h-40 rounded-xl overflow-hidden shadow-lg group-hover:shadow-blue-200 transition-all duration-700">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400" alt="Analysis" class="w-full h-full object-cover group-hover:scale-110 transition">
                         </div>
                     </div>
                 </div>
                 <!-- Step 2 -->
                 <div class="relative group">
-                    <span class="text-8xl font-black step-number absolute -top-12 -left-4 opacity-40 group-hover:opacity-100 transition duration-500">02</span>
-                    <div class="pt-8 relative z-10">
-                        <h4 class="text-xl font-bold text-white mb-4 uppercase tracking-widest">Проект</h4>
-                        <p class="text-slate-500 text-sm uppercase leading-relaxed font-light tracking-tight mb-6">Креирање на детален план и избор на најсоодветната опрема.</p>
-                        <div class="h-32 w-full overflow-hidden grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition duration-700">
-                            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=400" alt="Planning" class="w-full h-full object-cover">
+                    <span class="text-8xl font-black step-number absolute -top-16 -left-6 opacity-40 group-hover:opacity-100 transition duration-500">02</span>
+                    <div class="relative z-10 pt-4">
+                        <h4 class="text-lg font-black text-slate-900 mb-4 uppercase tracking-widest">Проект</h4>
+                        <p class="text-slate-500 text-[11px] uppercase leading-relaxed font-bold tracking-tight mb-8">Изработка на план за позиционирање и избор на камери.</p>
+                        <div class="h-40 rounded-xl overflow-hidden shadow-lg group-hover:shadow-blue-200 transition-all duration-700">
+                            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=400" alt="Planning" class="w-full h-full object-cover group-hover:scale-110 transition">
                         </div>
                     </div>
                 </div>
                 <!-- Step 3 -->
                 <div class="relative group">
-                    <span class="text-8xl font-black step-number absolute -top-12 -left-4 opacity-40 group-hover:opacity-100 transition duration-500">03</span>
-                    <div class="pt-8 relative z-10">
-                        <h4 class="text-xl font-bold text-white mb-4 uppercase tracking-widest">Монтажа</h4>
-                        <p class="text-slate-500 text-sm uppercase leading-relaxed font-light tracking-tight mb-6">Професионално поврзување и оптимизација на целиот систем.</p>
-                        <div class="h-32 w-full overflow-hidden grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition duration-700">
-                            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=400" alt="Installation" class="w-full h-full object-cover">
+                    <span class="text-8xl font-black step-number absolute -top-16 -left-6 opacity-40 group-hover:opacity-100 transition duration-500">03</span>
+                    <div class="relative z-10 pt-4">
+                        <h4 class="text-lg font-black text-slate-900 mb-4 uppercase tracking-widest">Монтажа</h4>
+                        <p class="text-slate-500 text-[11px] uppercase leading-relaxed font-bold tracking-tight mb-8">Прецизна инсталација без оштетување на вашиот ентериер.</p>
+                        <div class="h-40 rounded-xl overflow-hidden shadow-lg group-hover:shadow-blue-200 transition-all duration-700">
+                            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=400" alt="Installation" class="w-full h-full object-cover group-hover:scale-110 transition">
                         </div>
                     </div>
                 </div>
                 <!-- Step 4 -->
                 <div class="relative group">
-                    <span class="text-8xl font-black step-number absolute -top-12 -left-4 opacity-40 group-hover:opacity-100 transition duration-500">04</span>
-                    <div class="pt-8 relative z-10">
-                        <h4 class="text-xl font-bold text-white mb-4 uppercase tracking-widest">Заштита</h4>
-                        <p class="text-slate-500 text-sm uppercase leading-relaxed font-light tracking-tight mb-6">Постојан мониторинг и поддршка за ваша максимална сигурност.</p>
-                        <div class="h-32 w-full overflow-hidden grayscale brightness-50 group-hover:grayscale-0 group-hover:brightness-100 transition duration-700">
-                            <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&q=80&w=400" alt="Protection" class="w-full h-full object-cover">
+                    <span class="text-8xl font-black step-number absolute -top-16 -left-6 opacity-40 group-hover:opacity-100 transition duration-500">04</span>
+                    <div class="relative z-10 pt-4">
+                        <h4 class="text-lg font-black text-slate-900 mb-4 uppercase tracking-widest">Поддршка</h4>
+                        <p class="text-slate-500 text-[11px] uppercase leading-relaxed font-bold tracking-tight mb-8">24/7 техничка помош и одржување на вашиот систем.</p>
+                        <div class="h-40 rounded-xl overflow-hidden shadow-lg group-hover:shadow-blue-200 transition-all duration-700">
+                            <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&q=80&w=400" alt="Protection" class="w-full h-full object-cover group-hover:scale-110 transition">
                         </div>
                     </div>
                 </div>
@@ -245,90 +271,94 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-32 border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 mb-12 flex justify-between items-end">
+    <!-- Gallery -->
+    <section id="gallery" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6 mb-16 flex justify-between items-end">
             <div>
-                <span class="text-cyan-500 font-mono text-sm uppercase tracking-[0.5em]">03. Портфолио</span>
-                <h2 class="text-5xl font-bold text-white mt-4 uppercase tracking-tighter">Галерија од работа</h2>
+                <span class="text-blue-600 font-mono text-xs font-bold uppercase tracking-[0.5em]">03. ПРОЕКТИ</span>
+                <h2 class="text-5xl font-black text-slate-900 mt-4 uppercase tracking-tighter">На терен</h2>
             </div>
-            <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-2 hidden md:block italic">Вистински монтажи на терен_</p>
+            <p class="text-slate-400 text-[10px] font-bold uppercase tracking-[0.3em] hidden md:block italic">РЕАЛНИ ПРИМЕРИ_</p>
         </div>
         
-        <div class="gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 px-6">
-            <div class="group overflow-hidden border border-white/5 relative bg-slate-900 aspect-square">
-                <img src="https://images.unsplash.com/photo-1548092372-0d1bd40894a3?auto=format&fit=crop&q=80&w=800" alt="Professional Camera Install" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-1000 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                <div class="absolute bottom-4 left-4">
-                    <div class="font-mono text-[10px] text-cyan-400">PROJECT_DOM_01</div>
-                    <div class="text-xs text-white font-bold uppercase tracking-wider">Монтажа на IP Камера</div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 px-4">
+            <div class="group relative aspect-square overflow-hidden bg-slate-100">
+                <img src="https://images.unsplash.com/photo-1548092372-0d1bd40894a3?auto=format&fit=crop&q=80&w=800" alt="Install" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                <div class="absolute inset-0 bg-blue-600/10 group-hover:bg-transparent transition-all"></div>
+                <div class="absolute bottom-6 left-6 text-white z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <p class="font-mono text-[9px] font-bold">NODE_01</p>
+                    <p class="text-xs font-black uppercase">Стамбен Објект</p>
                 </div>
             </div>
-            <div class="group overflow-hidden border border-white/5 relative bg-slate-900 aspect-square">
-                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800" alt="Home Security" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-1000 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                <div class="absolute bottom-4 left-4">
-                    <div class="font-mono text-[10px] text-cyan-400">PROJECT_VILA_02</div>
-                    <div class="text-xs text-white font-bold uppercase tracking-wider">Надзор на Објект</div>
+            <div class="group relative aspect-square overflow-hidden bg-slate-100">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800" alt="Home" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                <div class="absolute inset-0 bg-blue-600/10 group-hover:bg-transparent transition-all"></div>
+                <div class="absolute bottom-6 left-6 text-white z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <p class="font-mono text-[9px] font-bold">NODE_02</p>
+                    <p class="text-xs font-black uppercase">Приватна Вила</p>
                 </div>
             </div>
-            <div class="group overflow-hidden border border-white/5 relative bg-slate-900 aspect-square">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Monitoring Center Real" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-1000 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                <div class="absolute bottom-4 left-4">
-                    <div class="font-mono text-[10px] text-cyan-400">CONTROL_STATION_03</div>
-                    <div class="text-xs text-white font-bold uppercase tracking-wider">Контролен Центар</div>
+            <div class="group relative aspect-square overflow-hidden bg-slate-100">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Monitoring" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                <div class="absolute inset-0 bg-blue-600/10 group-hover:bg-transparent transition-all"></div>
+                <div class="absolute bottom-6 left-6 text-white z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <p class="font-mono text-[9px] font-bold">NODE_03</p>
+                    <p class="text-xs font-black uppercase">Контролна Соба</p>
                 </div>
             </div>
-            <div class="group overflow-hidden border border-white/5 relative bg-slate-900 aspect-square">
-                <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=800" alt="Business Security" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-1000 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                <div class="absolute bottom-4 left-4">
-                    <div class="font-mono text-[10px] text-cyan-400">BUSINESS_SAFE_04</div>
-                    <div class="text-xs text-white font-bold uppercase tracking-wider">Индустриски Надзор</div>
+            <div class="group relative aspect-square overflow-hidden bg-slate-100">
+                <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=800" alt="Industrial" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                <div class="absolute inset-0 bg-blue-600/10 group-hover:bg-transparent transition-all"></div>
+                <div class="absolute bottom-6 left-6 text-white z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <p class="font-mono text-[9px] font-bold">NODE_04</p>
+                    <p class="text-xs font-black uppercase">Магацински Простор</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Why Us / Team -->
-    <section id="about" class="py-32 bg-white text-black">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
-            <div>
-                <h2 class="text-6xl font-black uppercase leading-none mb-10 tracking-tighter">Нашиот Тим. <br><span class="text-cyan-600">4SECURE.</span></h2>
-                <p class="text-lg font-medium mb-8 leading-relaxed italic border-l-4 border-black pl-6">
-                    Ние сме тим од четворица специјалисти со долгогодишно искуство. Веруваме во квалитет наместо квантитет. Секој проект го третираме како за свој дом.
+    <section id="about" class="py-32 bg-slate-900 text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-24 items-center">
+            <div class="relative">
+                <h2 class="text-7xl font-black uppercase leading-[0.9] mb-12 tracking-tighter">Нашиот Тим. <br><span class="text-blue-500">4SECURE.</span></h2>
+                <p class="text-xl font-medium mb-10 leading-relaxed italic text-slate-300 border-l-4 border-blue-500 pl-8">
+                    Четворица експерти, стотици успешно заштитени објекти. Ние не правиме компромис со квалитетот. Вашиот мир е нашата најголема награда.
                 </p>
-                <div class="grid grid-cols-2 gap-px bg-black/10">
-                    <div class="p-6 bg-white font-bold uppercase text-[10px] tracking-widest flex items-center gap-2 italic">
-                        <i class="fa-solid fa-check-double text-cyan-600"></i> Прецизна монтажа
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-blue-500"></i>
+                        <span class="text-[10px] font-bold uppercase tracking-widest">Сертифицирана опрема</span>
                     </div>
-                    <div class="p-6 bg-white font-bold uppercase text-[10px] tracking-widest flex items-center gap-2 italic">
-                        <i class="fa-solid fa-shield-halved text-cyan-600"></i> СЕРТИФИЦИРАНА ОПРЕМА
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-blue-500"></i>
+                        <span class="text-[10px] font-bold uppercase tracking-widest">Експресна монтажа</span>
                     </div>
-                    <div class="p-6 bg-white font-bold uppercase text-[10px] tracking-widest flex items-center gap-2 italic">
-                        <i class="fa-solid fa-clock-rotate-left text-cyan-600"></i> БРЗА ИЗВЕДБА
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-blue-500"></i>
+                        <span class="text-[10px] font-bold uppercase tracking-widest">Доживотна поддршка</span>
                     </div>
-                    <div class="p-6 bg-white font-bold uppercase text-[10px] tracking-widest flex items-center gap-2 italic">
-                        <i class="fa-solid fa-headset text-cyan-600"></i> ПОДДРШКА 24/7
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-blue-500"></i>
+                        <span class="text-[10px] font-bold uppercase tracking-widest">Модерни софтвери</span>
                     </div>
                 </div>
             </div>
             <div class="relative">
-                <div class="bg-black p-12 text-white shadow-[20px_20px_0_rgba(34,211,238,1)] relative z-10">
-                    <span class="text-cyan-400 font-mono text-sm uppercase block mb-8 tracking-[0.4em]">КОНТАКТИРАЈТЕ НÈ_</span>
-                    <div class="space-y-10">
+                <div class="bg-white p-16 text-slate-900 shadow-[30px_30px_0px_#2563eb]">
+                    <span class="text-blue-600 font-mono text-xs font-bold block mb-10 tracking-[0.4em]">КОНТАКТ_ИНФО</span>
+                    <div class="space-y-12">
                         <div class="group cursor-pointer">
-                            <p class="text-slate-500 text-xs uppercase mb-3 font-bold">Линија за корисници</p>
-                            <p class="text-3xl font-black group-hover:text-cyan-400 transition">07X XXX XXX</p>
+                            <p class="text-slate-400 text-[10px] uppercase mb-3 font-bold tracking-widest">Продажба и Поддршка</p>
+                            <p class="text-4xl font-black group-hover:text-blue-600 transition tracking-tighter">07X XXX XXX</p>
                         </div>
                         <div class="group cursor-pointer">
-                            <p class="text-slate-500 text-xs uppercase mb-3 font-bold">Достапност</p>
-                            <p class="text-3xl font-black group-hover:text-cyan-400 transition tracking-tighter">ЦЕЛА МАКЕДОНИЈА</p>
+                            <p class="text-slate-400 text-[10px] uppercase mb-3 font-bold tracking-widest">Работно подрачје</p>
+                            <p class="text-4xl font-black group-hover:text-blue-600 transition tracking-tighter uppercase">Цела Македонија</p>
                         </div>
                         <div class="group cursor-pointer">
-                            <p class="text-slate-500 text-xs uppercase mb-3 font-bold">Е-маил адреса</p>
-                            <p class="text-2xl font-black group-hover:text-cyan-400 transition">info@4secure.mk</p>
+                            <p class="text-slate-400 text-[10px] uppercase mb-3 font-bold tracking-widest">Пишете ни</p>
+                            <p class="text-3xl font-black group-hover:text-blue-600 transition tracking-tighter">info@4secure.mk</p>
                         </div>
                     </div>
                 </div>
@@ -337,40 +367,45 @@
     </section>
 
     <!-- Contact Form -->
-    <section id="contact" class="py-40 px-6">
-        <div class="max-w-4xl mx-auto border border-white/10 p-10 md:p-24 relative bg-black/40 backdrop-blur-sm">
-            <div class="absolute top-0 right-0 p-4 font-mono text-[10px] text-white/20 uppercase tracking-[1em]">AUTH_REQUEST</div>
-            <h2 class="text-4xl font-bold text-white mb-4 uppercase tracking-tighter">Започни разговор_</h2>
-            <p class="text-slate-500 mb-12 uppercase text-xs font-bold tracking-widest italic">Побарајте бесплатна консултација веднаш.</p>
+    <section id="contact" class="py-40 px-6 bg-slate-50">
+        <div class="max-w-4xl mx-auto border border-slate-200 p-12 md:p-24 bg-white shadow-2xl rounded-3xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-6 font-mono text-[10px] text-slate-200 uppercase tracking-[1em] rotate-90">REQUEST_FORM</div>
+            <h2 class="text-5xl font-black text-slate-900 mb-4 uppercase tracking-tighter">Побарај понуда_</h2>
+            <p class="text-slate-500 mb-16 uppercase text-xs font-bold tracking-[0.2em] italic border-b border-slate-100 pb-6">Ќе ве контактираме во рок од 30 минути.</p>
             
-            <form class="space-y-8" onsubmit="event.preventDefault(); alert('Вашата порака е успешно пратена! Ќе ве контактираме набрзо.');">
-                <div class="grid md:grid-cols-2 gap-10">
+            <form class="space-y-10" onsubmit="event.preventDefault();">
+                <div class="grid md:grid-cols-2 gap-12">
                     <div class="relative">
-                        <input type="text" placeholder="ИМЕ И ПРЕЗИМЕ" required class="w-full bg-transparent border-b border-white/10 py-4 focus:border-cyan-500 outline-none transition text-sm font-bold uppercase tracking-widest placeholder:text-slate-700">
+                        <label class="text-[9px] font-black uppercase text-blue-600 tracking-widest block mb-2">Целосно Име</label>
+                        <input type="text" placeholder="ПР: ПЕТАР ПЕТРОВСКИ" required class="w-full bg-transparent border-b-2 border-slate-100 py-3 focus:border-blue-600 outline-none transition text-sm font-bold uppercase placeholder:text-slate-300">
                     </div>
                     <div class="relative">
-                        <input type="tel" placeholder="ТЕЛЕФОНСКИ БРОЈ" required class="w-full bg-transparent border-b border-white/10 py-4 focus:border-cyan-500 outline-none transition text-sm font-bold uppercase tracking-widest placeholder:text-slate-700">
+                        <label class="text-[9px] font-black uppercase text-blue-600 tracking-widest block mb-2">Контакт Телефон</label>
+                        <input type="tel" placeholder="ПР: 070 123 456" required class="w-full bg-transparent border-b-2 border-slate-100 py-3 focus:border-blue-600 outline-none transition text-sm font-bold uppercase placeholder:text-slate-300">
                     </div>
                 </div>
                 <div class="relative">
-                    <textarea rows="3" placeholder="КРАТОК ОПИС НА ПОТРЕБИТЕ (ДОМ, КАНЦЕЛАРИЈА...)" class="w-full bg-transparent border-b border-white/10 py-4 focus:border-cyan-500 outline-none transition text-sm font-bold uppercase tracking-widest placeholder:text-slate-700"></textarea>
+                    <label class="text-[9px] font-black uppercase text-blue-600 tracking-widest block mb-2">Тип на објект / Услуга</label>
+                    <textarea rows="2" placeholder="ОПИШЕТЕ ГИ ВАШИТЕ ПОТРЕБИ..." class="w-full bg-transparent border-b-2 border-slate-100 py-3 focus:border-blue-600 outline-none transition text-sm font-bold uppercase placeholder:text-slate-300"></textarea>
                 </div>
-                <button class="group relative px-12 py-6 overflow-hidden border border-cyan-500 text-cyan-500 font-black uppercase tracking-[0.4em] hover:text-black transition duration-500 w-full md:w-auto">
-                    <span class="relative z-10">Прати порака_</span>
-                    <div class="absolute inset-0 bg-cyan-500 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                <button class="bg-blue-600 text-white px-16 py-6 font-black uppercase text-xs tracking-[0.4em] shadow-xl shadow-blue-200 hover:bg-slate-900 transition-all duration-500 w-full md:w-auto">
+                    Прати Барање_
                 </button>
             </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-16 border-t border-white/5 text-center bg-[#030508]">
-        <div class="mb-8 flex justify-center gap-8 text-slate-600">
-            <a href="#" class="hover:text-cyan-500 transition-all transform hover:scale-110"><i class="fa-brands fa-facebook-f text-xl"></i></a>
-            <a href="#" class="hover:text-cyan-400 transition-all transform hover:scale-110"><i class="fa-brands fa-instagram text-xl"></i></a>
-            <a href="#" class="hover:text-cyan-500 transition-all transform hover:scale-110"><i class="fa-brands fa-linkedin-in text-xl"></i></a>
+    <footer class="py-16 border-t border-slate-100 text-center bg-white">
+        <div class="mb-10 flex justify-center gap-10 text-slate-300">
+            <a href="#" class="hover:text-blue-600 transition-all transform hover:scale-125"><i class="fa-brands fa-facebook-f text-xl"></i></a>
+            <a href="#" class="hover:text-blue-600 transition-all transform hover:scale-125"><i class="fa-brands fa-instagram text-xl"></i></a>
+            <a href="#" class="hover:text-blue-600 transition-all transform hover:scale-125"><i class="fa-brands fa-linkedin-in text-xl"></i></a>
         </div>
-        <p class="text-[10px] font-bold text-slate-700 uppercase tracking-[0.8em]">© 2024 4SECURE — PREMIUM SECURITY SOLUTIONS</p>
+        <div class="flex flex-col items-center gap-4">
+            <div class="text-[24px] font-black tracking-tighter text-slate-900 italic">4SECURE<span class="text-blue-600">.</span></div>
+            <p class="text-[9px] font-bold text-slate-400 uppercase tracking-[0.6em]">© 2024 — ПРЕМИУМ БЕЗБЕДНОСНИ РЕШЕНИЈА</p>
+        </div>
     </footer>
 
 </body>
