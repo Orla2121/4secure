@@ -4,14 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4SECURE | Безбедност на Највисоко Ниво</title>
-    
-    <!-- Favicon поставка за максимална острина и видливост -->
-    <link rel="icon" type="image/png" sizes="192x192" href="logo.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="logo.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
-    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -79,19 +71,20 @@
         }
 
         .main-logo {
-            height: 70px;
+            height: 85px;
             width: auto;
             object-fit: contain;
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
             transition: all 0.3s ease;
         }
 
+        /* Hero Image Container */
         .hero-image-container {
             position: absolute;
             right: 0;
             bottom: 0;
             height: 100%;
-            width: 50%;
+            width: 45%;
             display: flex;
             align-items: flex-end;
             justify-content: center;
@@ -107,12 +100,12 @@
             filter: drop-shadow(-20px 0 40px rgba(0,0,0,0.08));
         }
 
-        /* Mobile Menu Styles */
+        /* Mobile Menu State */
         #mobile-menu {
-            transition: transform 0.3s ease-in-out;
             transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        #mobile-menu.open {
+        #mobile-menu.active {
             transform: translateX(0);
         }
 
@@ -125,30 +118,30 @@
                 bottom: auto;
                 margin-top: 2rem;
                 display: flex;
+                order: 2;
             }
             .man-img {
                 transform: translateX(0);
                 height: 100%;
-                margin: 0 auto;
             }
             .main-logo {
-                height: 60px;
+                height: 65px;
             }
-            .hero-pattern {
-                padding-top: 120px;
+            .hero-content {
+                order: 1;
+                text-align: center;
+            }
+            .hero-buttons {
+                justify-content: center;
             }
         }
 
         @media (max-width: 640px) {
             .main-logo {
-                height: 50px;
+                height: 55px;
             }
-            h1 {
-                font-size: 2.5rem !important;
-                line-height: 1.2 !important;
-            }
-            .hero-image-container {
-                height: 300px;
+            .hero-pattern {
+                padding-top: 120px;
             }
         }
     </style>
@@ -157,8 +150,8 @@
 
     <!-- Header -->
     <header id="header" class="fixed w-full z-[100] transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 sm:h-28 flex justify-between items-center transition-all duration-300" id="header-container">
-            <a href="#" class="flex items-center gap-2 sm:gap-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-24 sm:h-28 flex justify-between items-center transition-all duration-300" id="header-container">
+            <a href="#" class="flex items-center gap-3 sm:gap-4">
                 <img src="logo.png" alt="4SECURE Logo" class="main-logo">
                 <div class="flex flex-col justify-center">
                     <span class="text-xl sm:text-3xl font-black tracking-tighter text-slate-900 leading-none">4SECURE</span>
@@ -167,15 +160,15 @@
             </a>
             
             <!-- Desktop Nav -->
-            <nav class="hidden lg:flex items-center space-x-10">
+            <nav class="hidden lg:flex items-center space-x-8">
                 <a href="#home" class="text-sm font-semibold hover:text-blue-600 transition">Почетна</a>
                 <a href="#services" class="text-sm font-semibold hover:text-blue-600 transition">Решенија</a>
                 <a href="#about" class="text-sm font-semibold hover:text-blue-600 transition">Зошто ние?</a>
                 <a href="#contact" class="btn-filled px-6 py-2.5 rounded-lg text-sm font-bold">Контактирај не</a>
             </nav>
 
-            <!-- Mobile Toggle -->
-            <button id="menu-toggle" class="lg:hidden text-2xl text-slate-900 focus:outline-none p-2">
+            <!-- Mobile Menu Toggle -->
+            <button id="menu-open" class="lg:hidden text-2xl text-slate-900 focus:outline-none p-2">
                 <i class="fa-solid fa-bars-staggered"></i>
             </button>
         </div>
@@ -188,7 +181,7 @@
                 <img src="logo.png" alt="Logo" class="h-10">
                 <span class="font-black text-xl">4SECURE</span>
             </div>
-            <button id="menu-close" class="text-2xl text-slate-900">
+            <button id="menu-close" class="text-3xl text-slate-900">
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
@@ -197,95 +190,108 @@
             <a href="#services" class="mobile-link text-2xl font-bold text-slate-900">Решенија</a>
             <a href="#about" class="mobile-link text-2xl font-bold text-slate-900">Зошто ние?</a>
             <div class="pt-6">
-                <a href="#contact" class="mobile-link btn-filled w-full py-4 rounded-xl text-center font-bold inline-block">Контактирај не</a>
+                <a href="#contact" class="mobile-link btn-filled w-full py-4 rounded-xl text-center font-bold inline-block text-lg">Контактирај не</a>
             </div>
         </nav>
-        <div class="mt-auto border-t pt-8">
-            <p class="text-slate-400 text-sm mb-4">Следете не:</p>
+        <div class="mt-auto border-t pt-8 flex flex-col gap-4">
+            <p class="text-slate-400 text-sm font-medium">Следете не:</p>
             <div class="flex gap-4">
-                <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 text-xl"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center text-slate-600 text-xl"><i class="fa-brands fa-instagram"></i></a>
             </div>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-pattern pt-32 sm:pt-48 pb-0 overflow-hidden border-b border-slate-100 relative min-h-[90vh] lg:flex lg:items-center">
+    <!-- Hero -->
+    <section id="home" class="hero-pattern pt-32 lg:pt-48 pb-0 overflow-hidden border-b border-slate-100 relative min-h-[90vh] flex flex-col lg:flex-row items-center">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 grid lg:grid-cols-12 gap-8 lg:gap-16 items-center relative z-10 w-full">
-            <div class="lg:col-span-7 lg:pb-20 text-center lg:text-left">
-                <span class="section-tag mb-4 sm:mb-6 inline-block">Официјален Hikvision & Dahua партнер</span>
-                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 leading-tight tracking-tight mb-6 sm:mb-8">
+            <div class="lg:col-span-7 hero-content lg:pb-20">
+                <span class="section-tag mb-6 inline-block">Официјален Hikvision & Dahua партнер</span>
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-slate-900 leading-[1.1] tracking-tight mb-6 sm:mb-8">
                     Професионална заштита за она што ви е <span class="text-blue-600 underline decoration-blue-100">најважно</span>.
                 </h1>
                 <p class="text-base sm:text-lg text-slate-500 mb-8 sm:mb-10 max-w-xl mx-auto lg:mx-0">
                     Нудиме комплетни инженерски решенија за видео надзор, аларми и контрола на пристап. Сигурност базирана на најнова технологија.
                 </p>
-                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                <div class="flex flex-col sm:flex-row hero-buttons gap-4">
                     <a href="#contact" class="btn-filled px-8 py-4 rounded-xl font-bold flex items-center justify-center gap-3">
                         Закажи Бесплатен Увид <i class="fa-solid fa-arrow-right text-xs"></i>
                     </a>
-                </div>
-                <div class="flex items-center justify-center lg:justify-start gap-4 mt-8">
-                    <div class="flex -space-x-2">
-                        <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200"></div>
-                        <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-300"></div>
-                        <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-400"></div>
+                    <div class="flex items-center justify-center gap-4 px-2 py-4 sm:py-0">
+                        <div class="flex -space-x-2">
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center"><i class="fa-solid fa-user text-[10px] text-slate-400"></i></div>
+                            <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center"><i class="fa-solid fa-user text-[10px] text-slate-400"></i></div>
+                        </div>
+                        <span class="text-sm font-bold text-slate-600">500+ задоволни клиенти</span>
                     </div>
-                    <span class="text-sm font-bold text-slate-600">500+ задоволни клиенти</span>
                 </div>
+            </div>
+            
+            <!-- Hero Image for Mobile & Tablet (visible through logic below) -->
+            <div class="lg:hidden hero-image-container">
+                <img src="man.png" alt="4SECURE Engineer" class="man-img" onerror="this.style.display='none'">
             </div>
         </div>
 
-        <!-- Hero Image (Responsive Handling) -->
-        <div class="hero-image-container">
-            <img src="Adobe Express - file.jpg" alt="4SECURE Engineer" class="man-img">
+        <!-- Hero Image for Desktop -->
+        <div class="hidden lg:flex hero-image-container">
+            <img src="man.png" alt="4SECURE Engineer" class="man-img" onerror="this.style.display='none'">
         </div>
     </section>
 
-    <!-- Services Grid -->
+    <!-- Services -->
     <section id="services" class="py-16 sm:py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
-            <div class="text-center mb-12 sm:mb-16">
-                <span class="section-tag mb-4 inline-block">Нашите Услуги</span>
+            <div class="text-center lg:text-left mb-12 sm:mb-16">
+                <span class="section-tag mb-4 inline-block">Нашите Решенија</span>
                 <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">Сеопфатна безбедносна инфраструктура</h2>
             </div>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <!-- Service 1 -->
                 <div class="card-standard p-6 sm:p-8 rounded-3xl">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 text-xl">
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6">
                         <i class="fa-solid fa-video"></i>
                     </div>
-                    <h3 class="text-lg sm:text-xl font-bold mb-3 text-slate-900">IP Видео Надзор</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Паметни камери со вештачка интелигенција за детекција на лица и возила во реално време.</p>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3">IP Видео Надзор</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Интелигентни системи со детекција на движење, ноќно снимање во боја и пристап од било каде.</p>
                 </div>
+
+                <!-- Service 2 -->
                 <div class="card-standard p-6 sm:p-8 rounded-3xl">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 text-xl">
-                        <i class="fa-solid fa-shield-halved"></i>
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-bell"></i>
                     </div>
-                    <h3 class="text-lg sm:text-xl font-bold mb-3 text-slate-900">Алармни Системи</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Целосна заштита на вашиот дом или бизнис со врвни AJAX и Hikvision безжични технологии.</p>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3">Алармни Системи</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Напредни аларми кои веднаш ве известуваат. Можност за поврзување со мониторинг центар.</p>
                 </div>
+
+                <!-- Service 3 -->
                 <div class="card-standard p-6 sm:p-8 rounded-3xl sm:col-span-2 lg:col-span-1">
-                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 text-xl">
-                        <i class="fa-solid fa-lock"></i>
+                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-door-open"></i>
                     </div>
-                    <h3 class="text-lg sm:text-xl font-bold mb-3 text-slate-900">Контрола на Пристап</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Биометриски решенија, препознавање на регистарски таблички и видео домофонија.</p>
+                    <h3 class="text-lg sm:text-xl font-bold mb-3">Контрола на Пристап</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Биометрија и видео домофони за целосна контрола на вашиот деловен или стамбен простор.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-white border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
-             <img src="logo.png" alt="4SECURE" class="h-12 sm:h-16 mx-auto mb-6 opacity-80">
-             <div class="flex justify-center gap-6 mb-8 text-slate-400">
-                <a href="#" class="hover:text-blue-600 transition text-lg"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#" class="hover:text-blue-600 transition text-lg"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="hover:text-blue-600 transition text-lg"><i class="fa-brands fa-viber"></i></a>
-             </div>
-             <p class="text-slate-400 text-[10px] sm:text-xs font-bold uppercase tracking-widest">© 2024 4SECURE Professional - Скопје, Македонија</p>
+    <footer class="py-12 sm:py-16 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col items-center text-center">
+                <a href="#" class="flex flex-col items-center gap-3 mb-8">
+                    <img src="logo.png" alt="4SECURE Logo" class="h-16 w-auto">
+                    <span class="text-2xl font-black tracking-tighter">4SECURE</span>
+                </a>
+                <p class="text-slate-400 text-xs font-bold uppercase tracking-widest">© 2024 4SECURE Professional - Скопје, Македонија</p>
+                <div class="flex gap-6 mt-8">
+                    <a href="#" class="text-slate-400 hover:text-blue-600 text-xl"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-blue-600 text-xl"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -293,36 +299,45 @@
         const header = document.getElementById('header');
         const headerContainer = document.getElementById('header-container');
         const logo = document.querySelector('.main-logo');
-        const menuToggle = document.getElementById('menu-toggle');
+        const menuOpen = document.getElementById('menu-open');
         const menuClose = document.getElementById('menu-close');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileLinks = document.querySelectorAll('.mobile-link');
-        
-        // Scroll Effect
+
+        // Scroll logic for header
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
+            if (window.scrollY > 30) {
                 header.classList.add('nav-glass');
                 headerContainer.classList.replace('h-28', 'h-20');
-                if(window.innerWidth > 640) logo.style.height = "55px";
+                headerContainer.classList.replace('h-24', 'h-20');
+                if (window.innerWidth > 640) logo.style.height = "65px";
+                else logo.style.height = "50px";
             } else {
                 header.classList.remove('nav-glass');
-                headerContainer.classList.replace('h-20', 'h-28');
-                if(window.innerWidth > 640) logo.style.height = "70px";
+                if (window.innerWidth > 640) {
+                    headerContainer.classList.add('h-28');
+                    headerContainer.classList.remove('h-20');
+                    logo.style.height = "85px";
+                } else {
+                    headerContainer.classList.add('h-24');
+                    headerContainer.classList.remove('h-20');
+                    logo.style.height = "65px";
+                }
             }
         });
 
-        // Mobile Menu Logic
+        // Mobile Menu Toggles
         const toggleMenu = () => {
-            mobileMenu.classList.toggle('open');
-            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : 'auto';
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
         };
 
-        menuToggle.addEventListener('click', toggleMenu);
+        menuOpen.addEventListener('click', toggleMenu);
         menuClose.addEventListener('click', toggleMenu);
         
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.remove('open');
+                mobileMenu.classList.remove('active');
                 document.body.style.overflow = 'auto';
             });
         });
